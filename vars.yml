@@ -1,0 +1,38 @@
+---
+aws_access_key:
+aws_secret_key:
+key_name: samplekey
+region: us-east-1
+ami_id: ami-09d8b5222f2b93bf0
+instance_type: t2.micro
+vpc:
+  name: example1
+  cidr_block: 12.0.0.0/16
+igw_name: igw_example1
+subnet1:
+  name: subnet-{{ region }}-1a
+  cidr: 12.0.1.0/24
+  az: us-east-1a
+subnet2:
+  name: subnet-{{ region }}-1b
+  cidr: 12.0.2.0/24
+  az: us-east-1b
+route_table:
+  name: rtb_exmaple1
+security_group:
+  name: sg_example1
+  description: Security Group to allow ssh and http
+ec2_instance1_name: testinginstance1
+ec2_instance2_name: testinginstance2
+target_group:
+  name: tg-example1
+  protocol: http
+  port: 80
+  state: present
+elb:
+  name: elb-example1
+  protocol: HTTP
+  port: 80
+  state: present
+  type: forward
+ansible_ssh_private_key_file: samplekey.pem

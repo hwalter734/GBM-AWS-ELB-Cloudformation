@@ -1,0 +1,90 @@
+[
+  {
+    "ParameterKey" : "AmiId",
+    "ParameterValue" : "ami-09d8b5222f2b93bf0"
+  },
+  {
+    "ParameterKey": "KeyName",
+    "ParameterValue" : "samplekey"
+  },
+  {
+    "ParameterKey" : "VpcCIDR",
+    "ParameterValue" : "12.0.0.0/16"
+  },
+  {
+    "ParameterKey" : "VpcName",
+    "ParameterValue" : "example1"
+  },
+  {
+    "ParameterKey" : "IgwName",
+    "ParameterValue" : "igw_example1"
+  },
+  {
+    "ParameterKey": "PublicSubnet1CIDR",
+    "ParameterValue" : "12.0.1.0/24"
+  },
+  {
+    "ParameterKey": "PublicSubnet2CIDR",
+    "ParameterValue" : "12.0.2.0/24"
+  },
+  {
+    "ParameterKey": "PublicSubnet1Az",
+    "ParameterValue" : "us-east-1a"
+  },
+  {
+    "ParameterKey": "PublicSubnet1AzName",
+    "ParameterValue" : "subnet-us-east-1-1a"
+  },
+  {
+    "ParameterKey": "PublicSubnet2Az",
+    "ParameterValue" : "us-east-1b"
+  },
+  {
+    "ParameterKey": "PublicSubnet2AzName",
+    "ParameterValue" : "subnet-us-east-1-1b"
+  },
+  {
+    "ParameterKey": "RouteTableName",
+    "ParameterValue" : "rtb_example1"
+  },
+  {
+    "ParameterKey": "InstanceSecurityGroupName",
+    "ParameterValue" : "sg_example1"
+  },
+  {
+    "ParameterKey": "TargetGroupName",
+    "ParameterValue" : "tg_example1"
+  },
+  {
+    "ParameterKey": "TargetGroupProtocol",
+    "ParameterValue" : "HTTP"
+  },
+  {
+    "ParameterKey": "TargetGroupPort",
+    "ParameterValue" : "80"
+  },
+  {
+    "ParameterKey": "ElbName",
+    "ParameterValue" : "elb-example1"
+  },
+  {
+    "ParameterKey": "ElbProtocol",
+    "ParameterValue" : "HTTP"
+  },
+  {
+    "ParameterKey": "ElbPort",
+    "ParameterValue" : "80"
+  },
+  {
+    "ParameterKey": "ElbProtocolType",
+    "ParameterValue" : "forward"
+  },
+  {
+    "ParameterKey": "Instance1Name",
+    "ParameterValue" : "testinginstance1"
+  },
+  {
+    "ParameterKey": "Instance2Name",
+    "ParameterValue" : "testinginstance2"
+  }
+]

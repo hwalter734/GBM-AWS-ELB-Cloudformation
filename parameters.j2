@@ -1,0 +1,90 @@
+[
+  {
+    "ParameterKey" : "AmiId",
+    "ParameterValue" : "{{ ami_id }}"
+  },
+  {
+    "ParameterKey": "KeyName",
+    "ParameterValue" : "{{ key_name }}"
+  },
+  {
+    "ParameterKey" : "VpcCIDR",
+    "ParameterValue" : "{{ vpc.cidr_block }}"
+  },
+  {
+    "ParameterKey" : "VpcName",
+    "ParameterValue" : "{{ vpc.name }}"
+  },
+  {
+    "ParameterKey" : "IgwName",
+    "ParameterValue" : "{{ igw_name }}"
+  },
+  {
+    "ParameterKey": "PublicSubnet1CIDR",
+    "ParameterValue" : "{{ subnet1.cidr }}"
+  },
+  {
+    "ParameterKey": "PublicSubnet2CIDR",
+    "ParameterValue" : "{{ subnet2.cidr }}"
+  },
+  {
+    "ParameterKey": "PublicSubnet1Az",
+    "ParameterValue" : "{{ subnet1.az }}"
+  },
+  {
+    "ParameterKey": "PublicSubnet1AzName",
+    "ParameterValue" : "{{ subnet1.name }}"
+  },
+  {
+    "ParameterKey": "PublicSubnet2Az",
+    "ParameterValue" : "{{ subnet2.az }}"
+  },
+  {
+    "ParameterKey": "PublicSubnet2AzName",
+    "ParameterValue" : "{{ subnet2.name }}"
+  },
+  {
+    "ParameterKey": "RouteTableName",
+    "ParameterValue" : "{{ route_table.name }}"
+  },
+  {
+    "ParameterKey": "InstanceSecurityGroupName",
+    "ParameterValue" : "{{ security_group.name }}"
+  },
+  {
+    "ParameterKey": "TargetGroupName",
+    "ParameterValue" : "{{ target_group.name }}"
+  },
+  {
+    "ParameterKey": "TargetGroupProtocol",
+    "ParameterValue" : "{{ target_group.protocol }}"
+  },
+  {
+    "ParameterKey": "TargetGroupPort",
+    "ParameterValue" : "{{ target_group.port }}"
+  },
+  {
+    "ParameterKey": "ElbName",
+    "ParameterValue" : "{{ elb.name }}"
+  },
+  {
+    "ParameterKey": "ElbProtocol",
+    "ParameterValue" : "{{ elb.protocol }}"
+  },
+  {
+    "ParameterKey": "ElbPort",
+    "ParameterValue" : "{{ elb.port }}"
+  },
+  {
+    "ParameterKey": "ElbProtocolType",
+    "ParameterValue" : "{{ elb.type }}"
+  },
+  {
+    "ParameterKey": "Instance1Name",
+    "ParameterValue" : "{{ ec2_instance1_name }}"
+  },
+  {
+    "ParameterKey": "Instance2Name",
+    "ParameterValue" : "{{ ec2_instance2_name }}"
+  }
+]
