@@ -234,6 +234,23 @@ Resources:
         - IpProtocol: tcp
           FromPort: 80
           ToPort: 80
+          SourceSecurityGroupId: !Ref ElbSecurityGroup
+
+  ElbSecurityGroup:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupName: !Ref ElbSecurityGroupName
+      GroupDescription: Enable SSH access and HTTP
+      VpcId: !Ref VPC
+      SecurityGroupIngress:
+        - IpProtocol: tcp
+          FromPort: 22
+          ToPort: 22
+          CidrIp: 0.0.0.0/0
+        - IpProtocol: tcp
+          FromPort: 80
+          ToPort: 80
+          CidrIp: 0.0.0.0/0
 
   ElbTargetGroup:
     Type: AWS::ElasticLoadBalancingV2::TargetGroup
@@ -268,7 +285,7 @@ Resources:
         - !Ref PublicSubnet1
         - !Ref PublicSubnet2
       SecurityGroups:
-        - !Ref InstanceSecurityGroup
+        - !Ref ElbSecurityGroup
 
   ElasticLoadBalancerListener:
     Type: AWS::ElasticLoadBalancingV2::Listener
@@ -290,15 +307,20 @@ Resources:
         - AssociatePublicIpAddress: true
           DeviceIndex: '0'
           SubnetId: !Ref PublicSubnet1
+          GroupSet:
+            - !Ref InstanceSecurityGroup
       UserData:
         Fn::Base64:
           !Sub |
           #!/bin/bash
-          yum -y update
-          yum install unzip -y
-          yum install httpd -y
-          service httpd start
-          cd /var/www && curl -O && unzip html.zip -d html && chmod 0755 html
+          sudo yum -y update
+          sudo yum install unzip -y
+          sudo yum install httpd -y
+          sudo yum install wget -y
+          sudo service httpd start
+          INSTANCEIP=$(curl http://checkip.amazonaws.com)
+          cd /var/www && wget https://github.com/hwalter734/GBM-AWS-ELB-Cloudformation/raw/main/html.zip && unzip html.zip && chmod 0755 html
+          sed -i "s/HOSTIP/$INSTANCEIP/g" index.html
       Tags:
         - Key: Name
           Value: !Ref Instance1Name
@@ -313,15 +335,20 @@ Resources:
         - AssociatePublicIpAddress: true
           DeviceIndex: '0'
           SubnetId: !Ref PublicSubnet2
+          GroupSet:
+            - !Ref InstanceSecurityGroup
       UserData:
         Fn::Base64:
           !Sub |
           #!/bin/bash
-          yum -y update
-          yum install unzip -y
-          yum install httpd -y
-          service httpd start
-          cd /var/www && curl -O && unzip html.zip -d html && chmod 0755 html
+          sudo yum -y update
+          sudo yum install unzip -y
+          sudo yum install httpd -y
+          sudo yum install wget -y
+          sudo service httpd start
+          INSTANCEIP=$(curl http://checkip.amazonaws.com)
+          cd /var/www && wget https://github.com/hwalter734/GBM-AWS-ELB-Cloudformation/raw/main/html.zip && unzip html.zip && chmod 0755 html
+          sed -i "s/HOSTIP/$INSTANCEIP/g" index.html
       Tags:
         - Key: Name
           Value: !Ref Instance2Name
