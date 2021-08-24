@@ -53,7 +53,7 @@
   },
   {
     "ParameterKey": "TargetGroupName",
-    "ParameterValue" : "tg_example1"
+    "ParameterValue" : "tgexample1"
   },
   {
     "ParameterKey": "TargetGroupProtocol",
