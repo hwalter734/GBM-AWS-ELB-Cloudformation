@@ -317,9 +317,9 @@ Resources:
           sudo yum install httpd -y
           sudo yum install wget -y
           sudo service httpd start
-          INSTANCEIP=$(curl http://checkip.amazonaws.com)
-          cd /var/www && wget https://github.com/hwalter734/GBM-AWS-ELB-Cloudformation/raw/main/html.zip && unzip html.zip && chmod 0755 html
-          sed -i "s/HOSTIP/$INSTANCEIP/g" index.html
+          export INSTANCEIP=$(curl http://checkip.amazonaws.com)
+          cd /var/www && wget  https://github.com/hwalter734/GBM-AWS-ELB-Cloudformation/raw/main/html.zip && unzip html.zip && chmod 0755 html
+          cd html/ && sed -i "s/HOSTIP/$INSTANCEIP/g" index.html
       Tags:
         - Key: Name
           Value: !Ref Instance1Name
@@ -345,9 +345,9 @@ Resources:
           sudo yum install httpd -y
           sudo yum install wget -y
           sudo service httpd start
-          INSTANCEIP=$(curl http://checkip.amazonaws.com)
+          export INSTANCEIP=$(curl http://checkip.amazonaws.com)
           cd /var/www && wget https://github.com/hwalter734/GBM-AWS-ELB-Cloudformation/raw/main/html.zip && unzip html.zip && chmod 0755 html
-          sed -i "s/HOSTIP/$INSTANCEIP/g" index.html
+          cd html/ && sed -i "s/HOSTIP/$INSTANCEIP/g" index.html
       Tags:
         - Key: Name
           Value: !Ref Instance2Name
