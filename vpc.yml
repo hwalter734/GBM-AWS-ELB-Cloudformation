@@ -234,14 +234,6 @@ Resources:
         - IpProtocol: tcp
           FromPort: 80
           ToPort: 80
-          SourceSecurityGroupOwnerId:
-            Fn::GetAtt:
-              - ElasticLoadBalancer
-              - SourceSecurityGroup.OwnerAlias
-          SourceSecurityGroupName:
-            Fn::GetAtt:
-              - ElasticLoadBalancer
-              - SourceSecurityGroup.GroupName
 
   ElbTargetGroup:
     Type: AWS::ElasticLoadBalancingV2::TargetGroup
@@ -257,7 +249,7 @@ Resources:
       TargetGroupAttributes:
         - Key: deregistration_delay.timeout_seconds
           Value: '20'
-      Port: !Ref TargetGroupProtocol
+      Port: !Ref TargetGroupPort
       VpcId: !Ref VPC
       TargetType: instance
       Targets:
@@ -275,6 +267,8 @@ Resources:
       Subnets:
         - !Ref PublicSubnet1
         - !Ref PublicSubnet2
+      SecurityGroups:
+        - !Ref InstanceSecurityGroup
 
   ElasticLoadBalancerListener:
     Type: AWS::ElasticLoadBalancingV2::Listener
@@ -301,9 +295,10 @@ Resources:
           !Sub |
           #!/bin/bash
           yum -y update
+          yum install unzip -y
           yum install httpd -y
           service httpd start
-          cd /var/www && curl -O && chmod 0755 html
+          cd /var/www && curl -O && unzip html.zip -d html && chmod 0755 html
       Tags:
         - Key: Name
           Value: !Ref Instance1Name
@@ -323,9 +318,10 @@ Resources:
           !Sub |
           #!/bin/bash
           yum -y update
+          yum install unzip -y
           yum install httpd -y
           service httpd start
-          cd /var/www && curl -O && chmod 0755 html
+          cd /var/www && curl -O && unzip html.zip -d html && chmod 0755 html
       Tags:
         - Key: Name
           Value: !Ref Instance2Name
