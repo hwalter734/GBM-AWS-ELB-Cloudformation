@@ -4,7 +4,7 @@
   tasks:
     - name: Update the parameters.json file with the provided user information...
       template:
-        src: parameters.j2
+        src: parameters_tower.j2
         dest: parameters.json
 
     - name: Loading data from parameters.json
